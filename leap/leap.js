@@ -1,12 +1,9 @@
-function Year(year) {
-  this.year = year;
+function Year(input) {
+  this.year = input;
 }
 
 Year.prototype.isLeap = function () {
-  var byFour = this.year % 4 === 0;
-  var byOneHundred = this.year % 100 === 0;
-  var byFourHundred = this.year % 400 === 0;
-  return byFour && !byOneHundred || byFour && byFourHundred;
+  return (this.year % 4 === 0) && (this.year % 100 !== 0) || (this.year % 4 === 0) && (this.year % 400 === 0);
 };
 
 module.exports = Year;
