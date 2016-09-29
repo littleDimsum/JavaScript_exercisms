@@ -7,14 +7,10 @@ var Bob = function() {};
 
 Bob.prototype.hey = function(input) {
   var response = 'Whatever.';
-  var hasLetters = /[a-z]/i.test(input);
-  var hasNums =  /^\d+$/.test(input);
   if (input[input.length - 1] === '?') response = "Sure.";
-  if ((input.toUpperCase() === input) && hasLetters) response = 'Whoa, chill out!';
+  if ((input.toUpperCase() === input) && (/[a-z]/i.test(input))) response = 'Whoa, chill out!';
   if (input.trim() === '') response = 'Fine. Be that way!';
   return response;
 };
 
 module.exports = Bob;
-
-// Edge cases that need to be handled --> Essentially  only numbers, or only spaces included here, three tests currently failing
