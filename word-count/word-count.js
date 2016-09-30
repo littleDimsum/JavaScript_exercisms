@@ -3,13 +3,11 @@ function Words(){}
 Words.prototype.count = function (input) {
   var words = processInput(input);
   var uniqueWords = words.unique();
-  var outputWords = {};
+  var output = {};
   for(var i = 0; i < uniqueWords.length; i++){
-    var count = elementCount(uniqueWords[i], words)
-    outputWords[uniqueWords[i]] = count;
+    output[uniqueWords[i]] = elementCount(uniqueWords[i], words);
   }
-
-  return outputWords;
+  return output;
 };
 
 Array.prototype.unique = function (){
@@ -31,13 +29,7 @@ function elementCount(element, array) {
 }
 
 function processInput(input){
-  var words = input.trim().split(/\s+/);
-  words = words.map(function(word) {return word.split("\n")});
-  var merged = [].concat.apply([], words);
-  words = merged.map(function(word) {return word.split("\t")});
-  var merged = [].concat.apply([], words);
-  words = merged.map(function(word) {return word.toLowerCase()})
-  return words;
+  return input.toLowerCase().trim().replace("\n", " ").replace("\t", " ").split(/\s+/);
 }
 
 module.exports = Words;
