@@ -16,7 +16,6 @@ BeerSong.prototype.sing = function (startNum, lastNum) {
   for(var i = startNum; i >= end; i--){
     result.push(this.verse(i));
   }
-  
   return result.join('\n');
 };
 
